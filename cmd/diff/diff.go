@@ -13,6 +13,17 @@ import (
 
 const ssDir = "screenshots"
 
+func mkDiffDir(diffDir string) error {
+	_, err := os.Stat(diffDir)
+	if os.IsNotExist(err) {
+		err = os.MkdirAll(diffDir, 0755)
+		if err != nil {
+			return fmt.Errorf("could not create ss dir: %v", err)
+		}
+	}
+	return nil
+}
+
 func decodePNG(png string) (image.Image, error) {
 	f, err := os.Open(png)
 	if err != nil {
@@ -62,6 +73,11 @@ func Diff(from string, to string) error {
 		return err
 	}
 	diffDir := path.Join(ssDir, from+"-"+to)
+
+	err := mkDiffDir(diffDir)
+	if err != nil {
+		return err
+	}
 
 	files, err := os.ReadDir(fromDir)
 	if err != nil {
