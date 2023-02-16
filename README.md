@@ -15,7 +15,7 @@ $ pagediff  screenshot --urllist==[URLリストのCSV] --browser[Chromium or Fir
 
 ###スクリーンショットを比較する
 ```zsh
-& pagediff diff --from=[比較元のディレクトリ(yyyyMMdd_hhmmss)] --to=[比較先のディレクトリ(yyyyMMdd_hhmmss)]
+$ pagediff diff --from=[比較元のディレクトリ(yyyyMMdd_hhmmss)] --to=[比較先のディレクトリ(yyyyMMdd_hhmmss)]
 ```
 指定したディレクトリの同名ファイルを比較します。
 ./screenshots/[比較元のディレクトリ]-[比較先のディレクトリ]/diff-[スクリーンショットファイル名]で保存されます。
