@@ -80,9 +80,9 @@ func (lc ListCsv) writeResult() error {
 			row.Path,
 		})
 	}
-	f, err := os.Create("result.csv")
+	f, err := os.Create(lc.FileName)
 	if err != nil {
-		return fmt.Errorf("failed to create file: %w", err)
+		return fmt.Errorf("failed to open file: %w", err)
 	}
 	w := csv.NewWriter(f)
 
